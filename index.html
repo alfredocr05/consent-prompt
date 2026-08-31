@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Six-Section Consent Prompt</title>
+<meta name="description" content="A structured prompt that directs an ambient AI scribe to document the pre-anesthesia consent conversation. From an ASA 2026 quality improvement poster.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
+</head><body>
+<title>Six-Section Consent Prompt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#EEF1F5;
+  --surface:#FFFFFF;
+  --surface-sunk:#F5F7FA;
+  --ink:#161824;
+  --ink-soft:#4A5060;
+  --ink-faint:#767D8E;
+  --rule:#D3DAE3;
+  --rule-soft:#E4E9EF;
+  --accent:#1F6F87;
+  --accent-bright:#2E93AF;
+  --warm:#B24A44;
+  --shadow:rgba(22,24,36,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101219;
+    --surface:#191C25;
+    --surface-sunk:#14171F;
+    --ink:#E7EAF0;
+    --ink-soft:#A8B0BF;
+    --ink-faint:#7C8496;
+    --rule:#2C313D;
+    --rule-soft:#232833;
+    --accent:#5FBCD6;
+    --accent-bright:#7CCFE6;
+    --warm:#E0857D;
+    --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101219;
+  --surface:#191C25;
+  --surface-sunk:#14171F;
+  --ink:#E7EAF0;
+  --ink-soft:#A8B0BF;
+  --ink-faint:#7C8496;
+  --rule:#2C313D;
+  --rule-soft:#232833;
+  --accent:#5FBCD6;
+  --accent-bright:#7CCFE6;
+  --warm:#E0857D;
+  --shadow:rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem 5rem}
+
+/* ---------- masthead ---------- */
+.mast{padding:3.25rem 0 2rem;border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 1.1rem;
+}
+h1{
+  font-family:Newsreader,Georgia,serif;
+  font-weight:500;font-size:clamp(2.1rem,7vw,3.1rem);line-height:1.08;
+  letter-spacing:-.015em;margin:0 0 .9rem;text-wrap:balance;
+}
+.standfirst{
+  font-size:1.075rem;line-height:1.55;color:var(--ink-soft);
+  margin:0 0 1.9rem;max-width:34rem;text-wrap:pretty;
+}
+.origin{
+  font-size:.83rem;line-height:1.6;color:var(--ink-faint);
+  border-left:2px solid var(--rule);padding-left:.9rem;margin:0;
+}
+.origin strong{color:var(--ink-soft);font-weight:600}
+
+/* ---------- copy action ---------- */
+.action{
+  position:sticky;top:0;z-index:20;
+  background:var(--paper);
+  padding:1rem 0 .9rem;
+  border-bottom:1px solid var(--rule-soft);
+  display:flex;gap:.85rem;align-items:center;flex-wrap:wrap;
+}
+button.copy{
+  font-family:inherit;font-size:.94rem;font-weight:600;
+  background:var(--accent);color:var(--surface);
+  border:none;border-radius:2px;
+  padding:.72rem 1.35rem;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.55rem;
+  transition:background .15s ease;
+}
+:root[data-theme="dark"] button.copy,
+:root:not([data-theme="light"]) button.copy{color:#101219}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) button.copy{color:#fff}}
+button.copy:hover{background:var(--accent-bright)}
+button.copy:focus-visible{outline:2px solid var(--warm);outline-offset:3px}
+button.copy svg{width:15px;height:15px;flex:none}
+.action-note{font-size:.82rem;color:var(--ink-faint);margin:0}
+.action-note.ok{color:var(--accent)}
+
+/* ---------- sections ---------- */
+section{padding:2.4rem 0;border-bottom:1px solid var(--rule-soft)}
+h2{
+  font-family:Newsreader,Georgia,serif;
+  font-weight:600;font-size:1.45rem;line-height:1.2;letter-spacing:-.01em;
+  margin:0 0 1.1rem;
+}
+p{margin:0 0 1rem;max-width:38rem}
+p:last-child{margin-bottom:0}
+
+.points{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.points li{display:grid;grid-template-columns:auto 1fr;gap:.85rem;align-items:start}
+.points .tick{
+  width:1.15rem;height:1.15rem;margin-top:.28rem;flex:none;
+  border:1.5px solid var(--accent);border-radius:50%;
+  display:grid;place-items:center;
+}
+.points .tick::after{content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--accent)}
+.points strong{font-weight:600}
+.points span{color:var(--ink-soft)}
+
+/* ---------- the prompt ---------- */
+.prompt{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  box-shadow:0 1px 3px var(--shadow);
+  overflow:hidden;
+}
+.prompt-head{
+  padding:1.1rem 1.4rem;border-bottom:1px solid var(--rule-soft);
+  background:var(--surface-sunk);
+}
+.prompt-head p{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0;
+}
+.prompt-body{padding:1.4rem}
+.block{margin:0 0 1.75rem}
+.block:last-child{margin-bottom:0}
+.block-label{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.73rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 .6rem;
+}
+.block ul{margin:0;padding-left:1.15rem;display:grid;gap:.42rem}
+.block li{font-size:.93rem;line-height:1.55;color:var(--ink-soft)}
+.block li::marker{color:var(--rule)}
+.block li ul{margin-top:.42rem;padding-left:1.05rem}
+
+/* numbered structure rail */
+.numbered{display:grid;gap:1.5rem;counter-reset:sec}
+.sec{
+  display:grid;grid-template-columns:2.1rem 1fr;gap:.95rem;
+  counter-increment:sec;
+}
+.sec-num{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.82rem;font-weight:500;color:var(--surface);
+  background:var(--ink);
+  width:1.7rem;height:1.7rem;border-radius:2px;
+  display:grid;place-items:center;margin-top:.05rem;
+}
+.sec-num::before{content:counter(sec,decimal-leading-zero)}
+.sec-title{
+  font-weight:600;font-size:.95rem;letter-spacing:.02em;
+  margin:0 0 .5rem;color:var(--ink);
+}
+.sec ul{margin:0;padding-left:1.05rem;display:grid;gap:.38rem}
+.sec li{font-size:.9rem;line-height:1.5;color:var(--ink-soft)}
+.sec li::marker{color:var(--rule)}
+.sec li ul{margin-top:.38rem}
+
+.flag{
+  margin-top:.55rem;padding:.5rem .75rem;
+  border-left:2px solid var(--warm);
+  background:var(--surface-sunk);
+  font-size:.87rem;color:var(--ink-soft);
+}
+.flag b{color:var(--warm);font-weight:600}
+
+/* ---------- governance ---------- */
+.gov{display:grid;gap:1.2rem}
+.gov-item{
+  border-left:2px solid var(--accent);padding-left:1rem;
+}
+.gov-item h3{
+  font-size:.95rem;font-weight:600;margin:0 0 .3rem;
+}
+.gov-item p{font-size:.92rem;color:var(--ink-soft);margin:0}
+
+/* ---------- footer ---------- */
+footer{padding:2.6rem 0 0;border-bottom:none}
+footer p{font-size:.85rem;color:var(--ink-faint);line-height:1.65}
+footer a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)}
+footer a:hover{border-bottom-color:var(--accent)}
+.cite{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.78rem;line-height:1.7;color:var(--ink-soft);
+  background:var(--surface-sunk);border:1px solid var(--rule-soft);
+  padding:.9rem 1.05rem;border-radius:3px;margin:.2rem 0 1.4rem;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:480px){
+  .sec{grid-template-columns:1.8rem 1fr;gap:.75rem}
+  .prompt-body{padding:1.1rem}
+}
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">ANESTHESIOLOGY 2026 &middot; Quality Improvement</p>
+    <h1>The Six-Section Consent Prompt</h1>
+    <p class="standfirst">
+      A structured prompt that directs an ambient AI scribe to document the pre-anesthesia
+      consent conversation the way an anesthesiologist actually holds it. Copy it, paste it
+      into your scribe, adapt the wording to your institution.
+    </p>
+    <p class="origin">
+      From the poster <strong>Augmenting Pre-Anesthesia Consent Documentation With AI: A Two-Cycle
+      PDSA Quality Improvement Project</strong>.<br>
+      Alfredo Camargo Rodrigues, MD &middot; Bryan S. Brindeiro, MD &middot; James M. Blum, MD<br>
+      Department of Anesthesia and Health Care Information Systems, University of Iowa Health Care,
+      Iowa City, IA
+    </p>
+  </header>
+
+  <div class="action">
+    <button class="copy" id="copyBtn" type="button">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <rect x="5.5" y="5.5" width="9" height="9" rx="1.4"></rect>
+        <path d="M10.5 3.5v-1a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h1"></path>
+      </svg>
+      Copy the full prompt
+    </button>
+    <p class="action-note" id="copyNote">Plain text, ready to paste</p>
+  </div>
+
+  <section>
+    <h2>What the prompt changes</h2>
+    <ul class="points">
+      <li>
+        <span class="tick" aria-hidden="true"></span>
+        <span><strong>It fixes the shape of the note.</strong> Every encounter produces the same six
+        sections in the same order, so colleagues know where to look and the record stays predictable.</span>
+      </li>
+      <li>
+        <span class="tick" aria-hidden="true"></span>
+        <span><strong>It captures the conversation, not the checkbox.</strong> The note carries the
+        questions this patient asked, the risks the anesthesiologist actually raised, and the
+        understanding the patient demonstrated.</span>
+      </li>
+      <li>
+        <span class="tick" aria-hidden="true"></span>
+        <span><strong>It writes like a clinician.</strong> Style rules push the scribe toward concrete
+        detail from the conversation and away from generic filler.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The prompt</h2>
+    <div class="prompt">
+      <div class="prompt-head">
+        <p>Paste into your ambient scribe as a custom note template</p>
+      </div>
+      <div class="prompt-body">
+
+        <div class="block">
+          <p class="block-label">Task</p>
+          <ul><li>Generate a PRE-ANESTHESIA EVALUATION NOTE based on the conversation.</li></ul>
+        </div>
+
+        <div class="block">
+          <p class="block-label">Goals</p>
+          <ul>
+            <li>Reflect a clear, attentive, and patient-centered interaction.</li>
+            <li>Demonstrate that risks, plan, and next steps were thoroughly discussed.</li>
+            <li>Maintain concise, structured, and clinically accurate documentation.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <p class="block-label">Style</p>
+          <ul>
+            <li>Professional but warm tone.</li>
+            <li>Avoid robotic or generic phrasing.</li>
+            <li>When appropriate, briefly incorporate relevant human elements from the conversation,
+                for example the patient&rsquo;s day, the weather, or small personal context, to reflect rapport.</li>
+            <li>Do not state that anything is &ldquo;by protocol&rdquo;.</li>
+          </ul>
+          <p class="flag"><b>Why this rule earns its place.</b> The phrase &ldquo;by protocol&rdquo; is exactly
+          how a scribe collapses a real discussion back into boilerplate.</p>
+        </div>
+
+        <div class="block">
+          <p class="block-label">Structure</p>
+          <div class="numbered">
+
+            <div class="sec">
+              <div class="sec-num" aria-hidden="true"></div>
+              <div>
+                <p class="sec-title">INTERACTION SUMMARY</p>
+                <ul>
+                  <li>Brief narrative of the encounter.</li>
+                  <li>Include the patient&rsquo;s concerns, preferences, or expectations.</li>
+                  <li>Include any relevant personal or contextual details the patient mentioned.</li>
+                  <li>Include evidence of engagement: questions asked, comfort level, participation.</li>
+                  <li>Avoid generic descriptors such as &ldquo;warm&rdquo; or &ldquo;pleasant&rdquo;. Show the
+                      interaction through content.</li>
+                  <li>Prefer concrete details from the conversation over generic statements.</li>
+                  <li>When the patient expresses a preference, for example same day discharge, reflect
+                      that the team acknowledged it and folded it into planning.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="sec-num" aria-hidden="true"></div>
+              <div>
+                <p class="sec-title">ANESTHESIA PLAN</p>
+                <ul>
+                  <li>Clearly describe the planned anesthesia technique or techniques.</li>
+                  <li>Reflect personalization based on the patient&rsquo;s condition and the procedure.</li>
+                  <li>Include the IV plan only where it is relevant.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="sec-num" aria-hidden="true"></div>
+              <div>
+                <p class="sec-title">RISKS DISCUSSED</p>
+                <ul>
+                  <li>Clearly and explicitly list the anesthesia related risks discussed.</li>
+                  <li>Include both common and serious risks where the conversation raised them.</li>
+                  <li>Use clear and understandable language.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="sec-num" aria-hidden="true"></div>
+              <div>
+                <p class="sec-title">PATIENT UNDERSTANDING AND CONSENT</p>
+                <ul>
+                  <li>Document that the clinician explained risks, benefits, and alternatives.</li>
+                  <li>Document that the patient demonstrated understanding.</li>
+                  <li>Document that the patient had the opportunity to ask questions.</li>
+                  <li>Document that the clinician addressed all questions.</li>
+                  <li>Document that the patient agrees with the plan.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="sec-num" aria-hidden="true"></div>
+              <div>
+                <p class="sec-title">EXPECTATIONS AND NEXT STEPS</p>
+                <ul>
+                  <li>Describe what happens next in the perioperative flow: IV placement where needed,
+                      transfer to the operating room, monitoring, induction or sedation, and the
+                      recovery phases including PACU.</li>
+                  <li>Include expectations the conversation covered, for example pain control, nausea,
+                      and the recovery process.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="sec-num" aria-hidden="true"></div>
+              <div>
+                <p class="sec-title">ADDITIONAL RELEVANT POINTS</p>
+                <ul>
+                  <li>Include any other clinically relevant details the conversation covered.</li>
+                  <li>Avoid unnecessary repetition or filler.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fitting it to your institution</h2>
+    <p>
+      Three places reward local editing. Name your institution&rsquo;s specific increased risk list inside
+      section 3 so the note lines up with the consent form your department already signs. Match section 5
+      to your own perioperative flow, since the handoffs a patient should expect differ between sites.
+      Add any element your risk management group asks you to record, and put it in section 6.
+    </p>
+    <p>
+      Keep the style rules intact. They carry most of the difference between a note that reads like a
+      conversation and a note that reads like a form.
+    </p>
+  </section>
+
+  <section>
+    <h2>How we use it safely</h2>
+    <div class="gov">
+      <div class="gov-item">
+        <h3>The patient agrees before recording starts</h3>
+        <p>The anesthesiologist asks permission to use a hospital approved AI tool for note taking,
+        and the patient agrees before the scribe begins.</p>
+      </div>
+      <div class="gov-item">
+        <h3>The anesthesiologist reviews and edits every draft</h3>
+        <p>A clinician reads the generated note, corrects it, and signs it. The AI drafts; the
+        physician remains the author.</p>
+      </div>
+      <div class="gov-item">
+        <h3>The institutional consent template stays intact</h3>
+        <p>The generated section appends to the required consent note. The template remains the
+        legal backbone of the record.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Cite or contact</h2>
+    <p class="cite">
+      Camargo Rodrigues A, Brindeiro BS, Blum JM. Augmenting Pre-Anesthesia Consent
+      Documentation With AI: A Two-Cycle PDSA Quality Improvement Project. Presented at:
+      ANESTHESIOLOGY 2026 Annual Meeting; October 16&ndash;20, 2026; San Diego, CA.
+    </p>
+    <p>
+      Take this prompt, run it in your own department, and tell us what you change. Feedback from
+      other sites shapes where this work goes next.
+    </p>
+  </footer>
+
+</div>
+
+<script>
+const PROMPT_TEXT = `Generate a PRE-ANESTHESIA EVALUATION NOTE based on the conversation.
+
+GOALS:
+- Reflect a clear, attentive, and patient-centered interaction
+- Demonstrate that risks, plan, and next steps were thoroughly discussed
+- Maintain concise, structured, and clinically accurate documentation
+
+STYLE:
+- Professional but warm tone
+- Avoid robotic or generic phrasing
+- When appropriate, briefly incorporate relevant human elements from the conversation (e.g., patient's day, weather, small personal context) to reflect rapport
+- Do not state that anything is "by protocol"
+
+STRUCTURE:
+
+1. INTERACTION SUMMARY
+- Brief narrative of the encounter
+- Include:
+  - Patient's concerns, preferences, or expectations
+  - Any relevant personal or contextual details (if mentioned)
+  - Evidence of engagement (questions asked, comfort level, participation)
+- Avoid generic descriptors (e.g., "warm," "pleasant"); instead show the interaction through content
+- Prefer concrete details from the conversation over generic statements whenever available
+- If the patient expresses a preference (e.g., same-day discharge), explicitly reflect that this was acknowledged and incorporated into planning when appropriate
+
+2. ANESTHESIA PLAN
+- Clearly describe planned anesthesia technique(s)
+- When appropriate, reflect personalization based on patient condition or procedure
+- Do not mention IV attempts or failures; only include IV plan if relevant
+
+3. RISKS DISCUSSED
+- Clearly and explicitly list anesthesia-related risks discussed
+- Include both common and serious risks when mentioned
+- Use clear and understandable language
+
+4. PATIENT UNDERSTANDING AND CONSENT
+- Document that:
+  - Risks, benefits, and alternatives were explained
+  - Patient demonstrated understanding
+  - Patient had the opportunity to ask questions
+  - All questions were addressed
+  - Patient agrees with the plan
+
+5. EXPECTATIONS AND NEXT STEPS
+- Describe what will happen next in the perioperative flow:
+  - IV placement (if needed)
+  - Transfer to operating room
+  - Monitoring
+  - Induction/sedation
+  - Recovery phases (PACU, etc.)
+- Include expectations when discussed (e.g., pain control, nausea, recovery process)
+
+6. ADDITIONAL RELEVANT POINTS
+- Include any other clinically relevant details discussed
+- Avoid unnecessary repetition or filler`;
+
+const btn = document.getElementById('copyBtn');
+const note = document.getElementById('copyNote');
+let timer;
+
+function flash(msg, ok){
+  note.textContent = msg;
+  note.classList.toggle('ok', !!ok);
+  clearTimeout(timer);
+  timer = setTimeout(function(){
+    note.textContent = 'Plain text, ready to paste';
+    note.classList.remove('ok');
+  }, 2600);
+}
+
+function fallbackCopy(){
+  const ta = document.createElement('textarea');
+  ta.value = PROMPT_TEXT;
+  ta.setAttribute('readonly','');
+  ta.style.position = 'fixed';
+  ta.style.top = '-1000px';
+  document.body.appendChild(ta);
+  ta.select();
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+
+btn.addEventListener('click', async function(){
+  let ok = false;
+  if (navigator.clipboard && window.isSecureContext) {
+    try { await navigator.clipboard.writeText(PROMPT_TEXT); ok = true; } catch (e) { ok = false; }
+  }
+  if (!ok) ok = fallbackCopy();
+  flash(ok ? 'Copied. Paste it into your scribe.' : 'Select the prompt above and copy it manually.', ok);
+});
+</script>
+</body></html>
