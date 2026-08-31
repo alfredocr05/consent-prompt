@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consent Note Examples</title>
+<meta name="description" content="Four detailed example pre-anesthesia consent notes produced by an ambient AI scribe with a six-section structured prompt. Every example is a synthetic composite.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#129658;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#EEF1F5;--surface:#FFFFFF;--sunk:#F5F7FA;--ink:#161824;--soft:#4A5060;--faint:#767D8E;
+  --rule:#D3DAE3;--rule2:#E4E9EF;--accent:#1F6F87;--accent2:#2E93AF;--warm:#B24A44;--warmbg:#FBEEEC;
+  --shadow:rgba(22,24,36,.07);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#101219;--surface:#191C25;--sunk:#14171F;--ink:#E7EAF0;--soft:#A8B0BF;--faint:#7C8496;
+  --rule:#2C313D;--rule2:#232833;--accent:#5FBCD6;--accent2:#7CCFE6;--warm:#E0857D;--warmbg:#2A1E1E;
+  --shadow:rgba(0,0,0,.4);}}
+:root[data-theme="dark"]{
+  --paper:#101219;--surface:#191C25;--sunk:#14171F;--ink:#E7EAF0;--soft:#A8B0BF;--faint:#7C8496;
+  --rule:#2C313D;--rule2:#232833;--accent:#5FBCD6;--accent2:#7CCFE6;--warm:#E0857D;--warmbg:#2A1E1E;
+  --shadow:rgba(0,0,0,.4);}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
+.wrap{max-width:52rem;margin:0 auto;padding:0 1.25rem 5rem}
+header.mast{padding:3rem 0 1.6rem;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem}
+h1{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(2rem,6.5vw,2.9rem);line-height:1.08;
+  letter-spacing:-.015em;margin:0 0 .8rem;text-wrap:balance}
+.standfirst{font-size:1.05rem;line-height:1.55;color:var(--soft);margin:0 0 1.6rem;max-width:36rem}
+.origin{font-size:.83rem;line-height:1.6;color:var(--faint);border-left:2px solid var(--rule);padding-left:.9rem;margin:0}
+.origin strong{color:var(--soft);font-weight:600}
+/* the disclosure has to be impossible to miss */
+.synth{margin:1.6rem 0 0;background:var(--warmbg);border-left:3px solid var(--warm);border-radius:2px;padding:1rem 1.1rem}
+.synth b{display:block;font-size:.95rem;color:var(--warm);margin-bottom:.3rem}
+.synth p{margin:0;font-size:.92rem;line-height:1.55;color:var(--soft)}
+nav.toc{display:flex;flex-wrap:wrap;gap:.5rem;padding:1.5rem 0;border-bottom:1px solid var(--rule2)}
+nav.toc a{font-size:.86rem;color:var(--accent);text-decoration:none;border:1px solid var(--rule);
+  border-radius:2rem;padding:.35rem .8rem}
+nav.toc a:hover{border-color:var(--accent)}
+section.intro{padding:1.8rem 0;border-bottom:1px solid var(--rule2)}
+h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.4rem;margin:0 0 .8rem}
+section.intro p{margin:0 0 .8rem;color:var(--soft);max-width:40rem}
+section.intro p:last-child{margin:0}
+.case{margin:2.2rem 0 0;background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  box-shadow:0 1px 3px var(--shadow);overflow:hidden}
+.chead{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 1.4rem;background:var(--sunk);
+  border-bottom:1px solid var(--rule2)}
+.cnum{flex:none;width:2.1rem;height:2.1rem;border-radius:2px;background:var(--accent);color:var(--surface);
+  display:grid;place-items:center;font-weight:600;font-size:1rem}
+:root[data-theme="dark"] .cnum,:root:not([data-theme="light"]) .cnum{color:#101219}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .cnum{color:#fff}}
+.ctag{font-family:"IBM Plex Mono",monospace;font-size:.7rem;font-weight:500;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent)}
+.chead h3{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.35rem;margin:.15rem 0 .3rem}
+.cwho{margin:0;font-size:.9rem;line-height:1.45;color:var(--faint)}
+.cbody{padding:1.3rem 1.4rem}
+.sec{margin:0 0 1.3rem}
+.sec:last-child{margin:0}
+.sec h4{font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 .45rem}
+.sec ul{margin:0;padding-left:1.15rem;display:grid;gap:.4rem}
+.sec li{font-size:.95rem;line-height:1.52;color:var(--ink)}
+.sec li::marker{color:var(--rule)}
+footer{padding:2.6rem 0 0;margin-top:2.4rem;border-top:1px solid var(--rule)}
+footer p{font-size:.85rem;color:var(--faint);line-height:1.65}
+footer a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)}
+.cite{font-family:"IBM Plex Mono",monospace;font-size:.78rem;line-height:1.7;color:var(--soft);
+  background:var(--sunk);border:1px solid var(--rule2);padding:.9rem 1.05rem;border-radius:3px;margin:.2rem 0 1.2rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="wrap">
+<header class="mast">
+  <p class="eyebrow">ANESTHESIOLOGY 2026 &middot; Quality Improvement</p>
+  <h1>What the Structured Note Looks Like</h1>
+  <p class="standfirst">Four full pre-anesthesia consent notes produced by an ambient AI scribe running the
+    six-section structured prompt. Each one shows the same six sections carrying a different conversation.</p>
+  <p class="origin">From the poster <strong>Augmenting Pre-Anesthesia Consent Documentation With AI: A Two-Cycle
+    PDSA Quality Improvement Project</strong>.<br>
+    Alfredo Camargo Rodrigues, MD &middot; Bryan S. Brindeiro, MD &middot; James M. Blum, MD<br>
+    Department of Anesthesia and Health Care Information Systems, University of Iowa Health Care, Iowa City, IA</p>
+  <div class="synth">
+    <b>Every example on this page is invented.</b>
+    <p>The authors wrote these notes as synthetic composites for display. The clinical situations, the ages, the
+      histories, the questions and the quoted words are all fabricated. No real patient appears here, and no real
+      note was masked or edited to produce them. What is faithful is the shape: the six sections, their order, and
+      the level of detail the tool produces in practice.</p>
+  </div>
+</header>
+
+<nav class="toc"><a href="#mac-ablation">1. Atrial flutter ablation</a><a href="#ga-hernia">2. Umbilical hernia repair</a><a href="#spinal-knee">3. Total knee arthroplasty</a><a href="#mac-cataract">4. Cataract extraction, discussion with a legally authorized representative</a></nav>
+
+<section class="intro">
+  <h2>Why the shape matters</h2>
+  <p>A consent record has to carry the same elements every time. An ambient scribe left to itself produced a
+    different shape at every encounter, which made the record unpredictable and kept other providers from adopting it.</p>
+  <p>The six-section prompt fixes the shape. The conversation still varies from patient to patient, and that variation
+    is exactly what these four examples show: the same headings, filled with four very different encounters.</p>
+</section>
+<article class="case" id="mac-ablation"><header class="chead"><span class="cnum">1</span><div><span class="ctag">MONITORED ANESTHESIA CARE</span><h3>Atrial flutter ablation</h3><p class="cwho">71-year-old man, coronary disease, prior lumbar fusion, obstructive sleep apnea on CPAP</p></div></header><div class="cbody"><div class="sec"><h4>INTERACTION SUMMARY</h4><ul><li>71-year-old man with coronary disease and a prior lumbar fusion, seen for pre-anesthesia evaluation before atrial flutter ablation.</li><li>He raised being awake during the procedure as his main worry, and referred back to a previous general anesthetic where he woke groggy and disoriented.</li><li>He asked directly how long he would need to lie flat, and said the immobility troubles him more than pain does.</li><li>He asked about the anesthetic plan and about comfort measures, and he asked to use the bathroom before going in.</li></ul></div><div class="sec"><h4>ANESTHESIA PLAN</h4><ul><li>Monitored anesthesia care with moderate sedation. He stays awake, interactive and able to speak throughout.</li><li>Sedation titrated to keep him comfortable and a little sleepy while still responsive. He should expect to remember much of the procedure.</li><li>Local anesthetic at the access sites. No regional block and no systemic local anesthetic beyond the standard infiltration.</li><li>Two peripheral intravenous lines, one already in place and a second to be placed, for fluids and medication. Oxygen by nasal cannula.</li><li>The plan is personalized to his paroxysmal arrhythmia. Full general anesthesia would suppress the rhythm and make mapping harder.</li></ul></div><div class="sec"><h4>RISKS DISCUSSED</h4><ul><li>General anesthesia can suppress the arrhythmia and hinder mapping, which risks an incomplete ablation.</li><li>Discomfort from lying still for a prolonged period, and unusual sensations in the legs during catheter manipulation.</li><li>If he becomes significantly distressed or cannot tolerate the procedure, the team can deepen sedation, and that increases the chance the ablation does not succeed.</li></ul></div><div class="sec"><h4>PATIENT UNDERSTANDING AND CONSENT</h4><ul><li>Risks, benefits and alternatives explained in detail.</li><li>He demonstrated understanding, asked questions, and the team addressed every concern he raised.</li><li>He agreed to proceed with the monitored anesthesia care approach.</li></ul></div><div class="sec"><h4>EXPECTATIONS AND NEXT STEPS</h4><ul><li>Use the bathroom before the procedure to minimize interruptions.</li><li>Transfer to the procedure room, monitors applied, positioned supine on a narrow bed with arms at the sides.</li><li>The procedure is scheduled for about four hours and may run shorter if the focus is identified quickly.</li><li>Recovery phases explained, and nursing staff will be available throughout.</li></ul></div><div class="sec"><h4>ADDITIONAL RELEVANT POINTS</h4><ul><li>No additional procedures planned beyond the described intravenous access and nasal oxygen.</li><li>His discomfort from earlier prolonged procedures was validated. Immobility, rather than pain, is his main challenge.</li><li>The team emphasized a collaborative partnership and encouraged him to report any symptom or intolerance during the procedure.</li></ul></div></div></article>
+<article class="case" id="ga-hernia"><header class="chead"><span class="cnum">2</span><div><span class="ctag">GENERAL ANESTHESIA</span><h3>Umbilical hernia repair</h3><p class="cwho">48-year-old man, former smoker, Crohn disease after subtotal colectomy with end ileostomy, obesity, sleep apnea, prior ischemic stroke, asthma</p></div></header><div class="cbody"><div class="sec"><h4>INTERACTION SUMMARY</h4><ul><li>The anesthesiologist reviewed the chart and recent history before meeting him. Nothing in the review substantially raised his perioperative risk beyond his known conditions.</li><li>He participated actively, asked about pain control after the repair, and stated a clear preference for the intravenous line on his left side.</li><li>He explained that intravenous insertion is typically the worst part of surgery for him. The team allowed him to look away and maintained his modesty during bed preparation.</li><li>He voiced understanding and said he felt ready for surgery.</li></ul></div><div class="sec"><h4>ANESTHESIA PLAN</h4><ul><li>General anesthesia with intravenous access established before entering the operating room.</li><li>Monitors applied, then anesthetic medication given to induce sleep and unconsciousness.</li><li>A personalized approach to pain control, using multimodal analgesia and opioids during and after the operation.</li><li>The plan reflects his comorbidities and the surgical procedure.</li></ul></div><div class="sec"><h4>RISKS DISCUSSED</h4><ul><li>General anesthesia risks reviewed, including allergic reaction, heart attack, stroke, death, and the need for intubation with possible dental injury and sore throat.</li><li>Postoperative nausea and vomiting discussed, noted as not markedly elevated for him but relevant because the surgery is abdominal.</li><li>Postoperative pain explained, especially given the hernia size and the incision, with reassurance that the team will manage the pain even though it cannot be promised to be absent.</li></ul></div><div class="sec"><h4>PATIENT UNDERSTANDING AND CONSENT</h4><ul><li>Risks, benefits and alternatives explained.</li><li>He demonstrated understanding, asked questions, and the team addressed all his concerns.</li><li>He agreed with the anesthesia plan and the next steps.</li></ul></div><div class="sec"><h4>EXPECTATIONS AND NEXT STEPS</h4><ul><li>Intravenous placement before the operation, on the left side, following his stated preference.</li><li>Transfer to the operating room, identity and procedure verification, monitors applied, then induction of anesthesia.</li><li>He should expect amnesia for events during the operation, waking in the operating room, then transfer to the recovery room for full consciousness and pain management.</li><li>A multimodal pain strategy is in place, including acetaminophen before surgery and anticipated discharge medication.</li></ul></div><div class="sec"><h4>ADDITIONAL RELEVANT POINTS</h4><ul><li>No new allergies, acute symptoms or logistical barriers identified.</li><li>Staff ensured his comfort and modesty during preparation.</li><li>His preference to look away during line placement was accommodated.</li></ul></div></div></article>
+<article class="case" id="spinal-knee"><header class="chead"><span class="cnum">3</span><div><span class="ctag">SPINAL WITH SEDATION AND NERVE BLOCK</span><h3>Total knee arthroplasty</h3><p class="cwho">66-year-old woman, hypertension, type 2 diabetes, prior spinal anesthetic that she recalls well</p></div></header><div class="cbody"><div class="sec"><h4>INTERACTION SUMMARY</h4><ul><li>66-year-old woman seen before a right total knee arthroplasty. She had a spinal anesthetic for a previous operation and remembers it clearly.</li><li>She asked whether she would hear the surgery, and said the sound was what unsettled her last time.</li><li>She asked how soon she could stand afterward, explaining that she cares for her husband at home and wants to return to that quickly.</li><li>She asked whether the nerve block would leave her leg weak.</li></ul></div><div class="sec"><h4>ANESTHESIA PLAN</h4><ul><li>Spinal anesthetic for the operation, with sedation titrated so she can rest and stay unaware of the room.</li><li>An adductor canal block for pain after surgery, chosen because it spares much of the quadriceps strength she needs to stand early.</li><li>Music through headphones offered, which addresses her concern about hearing the procedure.</li><li>Intravenous access before entering the operating room.</li></ul></div><div class="sec"><h4>RISKS DISCUSSED</h4><ul><li>Spinal anesthesia risks reviewed, including a drop in blood pressure, headache after the procedure, and difficulty passing urine.</li><li>Nerve block risks reviewed, including temporary weakness, bruising at the site, and a small risk of lasting nerve irritation.</li><li>The possibility that the spinal does not provide adequate anesthesia and the team converts to general anesthesia during the operation.</li><li>General risks of sedation explained, including breathing depression requiring support.</li></ul></div><div class="sec"><h4>PATIENT UNDERSTANDING AND CONSENT</h4><ul><li>Risks, benefits and alternatives explained, including the option of general anesthesia instead of a spinal.</li><li>She restated the plan in her own words, including why the block was chosen to protect her strength.</li><li>She asked questions, the team addressed them, and she agreed to the plan.</li></ul></div><div class="sec"><h4>EXPECTATIONS AND NEXT STEPS</h4><ul><li>Intravenous placement, block performed before the operation with monitoring, then transfer to the operating room.</li><li>Positioning for the spinal explained, along with what she will feel during placement.</li><li>Sedation begins once the spinal is working. She should expect to rest through the operation.</li><li>Recovery room, then return of leg sensation over several hours, with physical therapy planned the same day.</li></ul></div><div class="sec"><h4>ADDITIONAL RELEVANT POINTS</h4><ul><li>Her role as a caregiver at home shaped the choice of block and the early mobility plan.</li><li>She was reassured that headphones and sedation together address her concern about hearing the room.</li></ul></div></div></article>
+<article class="case" id="mac-cataract"><header class="chead"><span class="cnum">4</span><div><span class="ctag">MONITORED ANESTHESIA CARE</span><h3>Cataract extraction, discussion with a legally authorized representative</h3><p class="cwho">79-year-old woman with moderate dementia, atrial fibrillation, accompanied by her daughter who holds healthcare power of attorney</p></div></header><div class="cbody"><div class="sec"><h4>INTERACTION SUMMARY</h4><ul><li>79-year-old woman with moderate dementia seen before cataract extraction, accompanied by her daughter, who holds healthcare power of attorney.</li><li>The anesthesiologist spoke with both of them. The patient answered simple questions and said she wanted to see better to read her mail.</li><li>Her daughter asked how the team would keep her calm without a medication that worsens her confusion afterward.</li><li>Her daughter asked to stay with her until the procedure begins.</li></ul></div><div class="sec"><h4>ANESTHESIA PLAN</h4><ul><li>Monitored anesthesia care with minimal sedation, chosen deliberately to reduce the chance of postoperative confusion.</li><li>Topical and local anesthesia to the eye placed by the surgical team.</li><li>Reassurance and a familiar voice used in place of deeper sedation wherever possible.</li><li>Her daughter will stay with her in the preoperative area until transfer.</li></ul></div><div class="sec"><h4>RISKS DISCUSSED</h4><ul><li>Sedation can worsen confusion after the procedure, which is why the team plans to keep it minimal.</li><li>The need to lie still and the possibility of feeling pressure around the eye.</li><li>If she cannot stay still, the team may need to deepen sedation, which raises the risk of confusion afterward.</li><li>General risks of sedation explained, including breathing depression requiring support.</li></ul></div><div class="sec"><h4>PATIENT UNDERSTANDING AND CONSENT</h4><ul><li>Risks, benefits and alternatives explained to the patient in simple terms and to her daughter in full.</li><li>The patient indicated she understood she would be awake and that her eye would feel numb.</li><li>Her daughter demonstrated understanding, asked questions, and the team addressed each one.</li><li>Her daughter consented as the legally authorized representative, and the patient assented.</li></ul></div><div class="sec"><h4>EXPECTATIONS AND NEXT STEPS</h4><ul><li>Intravenous placement, monitors applied, then transfer to the procedure room with her daughter present until the door.</li><li>The procedure is short. She should expect light pressure and bright light rather than pain.</li><li>Recovery in the same area, with her daughter brought back as soon as she is settled.</li><li>Discharge home the same day with written instructions given to her daughter.</li></ul></div><div class="sec"><h4>ADDITIONAL RELEVANT POINTS</h4><ul><li>The plan to minimize sedation was driven directly by her daughter&#x27;s concern about postoperative confusion.</li><li>Her stated reason for wanting the surgery, reading her mail, was recorded because it reflects what she values.</li></ul></div></div></article>
+
+<footer>
+  <h2>Cite or contact</h2>
+  <p class="cite">Camargo Rodrigues A, Brindeiro BS, Blum JM. Augmenting Pre-Anesthesia Consent Documentation With AI:
+    A Two-Cycle PDSA Quality Improvement Project. Presented at: ANESTHESIOLOGY 2026 Annual Meeting;
+    October 16&ndash;20, 2026; San Diego, CA.</p>
+  <p>The prompt that produced these notes is on the companion page:
+    <a href="../">the six-section consent prompt</a>.<br>
+    Contact: <a href="mailto:alfredo-camargorodrigues@uiowa.edu">alfredo-camargorodrigues@uiowa.edu</a></p>
+  <p>The authors report no conflicts of interest and received no funding for this work.</p>
+</footer>
+</div></body></html>
