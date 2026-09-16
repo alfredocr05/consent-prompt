@@ -221,6 +221,13 @@ footer a:hover{border-bottom-color:var(--accent)}
   .sec{grid-template-columns:1.8rem 1fr;gap:.75rem}
   .prompt-body{padding:1.1rem}
 }
+
+.refs{margin:0;padding-left:1.4rem;display:grid;gap:.75rem}
+.refs li{font-size:.9rem;line-height:1.55;color:var(--ink-soft)}
+.refs li::marker{color:var(--accent);font-weight:600}
+.refs .ra{color:var(--ink);font-weight:500}
+.refs i{color:var(--ink-soft)}
+.refs a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);word-break:break-all}
 </style>
 
 <div class="wrap">
@@ -403,6 +410,11 @@ footer a:hover{border-bottom-color:var(--accent)}
   </section>
 
   <section>
+    <h2>See it filled in</h2>
+    <p>Four complete example notes produced with this prompt: <a href="examples/" style="color:var(--accent)">consent note examples</a>.</p>
+  </section>
+
+  <section>
     <h2>Fitting it to your institution</h2>
     <p>
       Three places reward local editing. Name your institution&rsquo;s specific increased risk list inside
@@ -435,6 +447,20 @@ footer a:hover{border-bottom-color:var(--accent)}
         legal backbone of the record.</p>
       </div>
     </div>
+  </section>
+
+
+  <section id="references">
+    <h2>References</h2>
+    <p>The poster cites these works by number.</p>
+    <ol class="refs">
+      <li><span class="ra">Tait AR, Teig MK, Voepel-Lewis T.</span> Informed consent for anesthesia: a review of practice and strategies for optimizing the consent process. <i>Can J Anesth. 2014;61(9):832&ndash;842.</i> <a href="https://doi.org/10.1007/s12630-014-0188-8">doi:10.1007/s12630-014-0188-8</a></li>
+      <li><span class="ra">Decker H, Trang K, Ramirez J, et al.</span> Large language model-based chatbot vs surgeon-generated informed consent documentation for common procedures. <i>JAMA Netw Open. 2023;6(10):e2336997.</i> <a href="https://doi.org/10.1001/jamanetworkopen.2023.36997">doi:10.1001/jamanetworkopen.2023.36997</a></li>
+      <li><span class="ra">Lawrence K, Kuram VS, Levine DL, et al.</span> Informed consent for ambient documentation using generative AI in ambulatory care. <i>JAMA Netw Open. 2025;8(7):e2522400.</i> <a href="https://doi.org/10.1001/jamanetworkopen.2025.22400">doi:10.1001/jamanetworkopen.2025.22400</a></li>
+      <li><span class="ra">Sidhu RS, Selvamogan A, Abdellatif M, et al.</span> Evaluating the ability of AI chatbots to provide informed consent information for common oncological surgeries. <i>Ann R Coll Surg Engl. 2025.</i> <a href="https://doi.org/10.1308/rcsann.2025.0089">doi:10.1308/rcsann.2025.0089</a></li>
+      <li><span class="ra">American Society of Anesthesiologists Task Force on Moderate Procedural Sedation and Analgesia, et al.</span> Practice guidelines for moderate procedural sedation and analgesia 2018. <i>Anesthesiology. 2018;128(3):437&ndash;479.</i> <a href="https://doi.org/10.1097/ALN.0000000000002043">doi:10.1097/ALN.0000000000002043</a></li>
+      <li><span class="ra">Kinnersley P, Phillips K, Savage K, et al.</span> Interventions to promote informed consent for patients undergoing surgical and other invasive healthcare procedures. <i>Cochrane Database Syst Rev. 2013;(7):CD009445.</i> <a href="https://doi.org/10.1002/14651858.CD009445.pub2">doi:10.1002/14651858.CD009445.pub2</a></li>
+    </ol>
   </section>
 
   <footer>
